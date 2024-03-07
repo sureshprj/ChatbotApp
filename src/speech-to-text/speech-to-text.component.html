@@ -1,0 +1,16 @@
+<div>
+    <button *ngIf="listening; else mic" class="soundwave" style="margin: 10px; background-color: #e0d216;"
+        (click)="stopService()">listening</button>
+    <ng-template #mic>
+        <button style="margin: 10px; background-color: #e0d216;" (click)="startService()">
+            Listen
+        </button>
+    </ng-template>
+</div>
+<div>
+    <textarea [(ngModel)]="inputText"></textarea>
+    <button (click)="analyze()">Submit query</button>
+</div>
+<section *ngIf="transcript$ | async">
+    <p>{{transcript$ | async}}</p>
+</section>

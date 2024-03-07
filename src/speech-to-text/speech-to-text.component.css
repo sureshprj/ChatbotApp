@@ -1,0 +1,31 @@
+.soundwave {
+    animation: soundwave 0.7s infinite;
+  }
+  
+  @keyframes soundwave {
+    from {
+      opacity: 0.5;
+      color: #16e020;
+    }
+    20% {
+      color: #16e020;
+      opacity: 0.6;
+    }
+    35% {
+      color: #16e020;
+      opacity: 0.9;
+    }
+    45% {
+      color: #16e020;
+      opacity: 1;
+    }
+    55% {
+      color: #16e020;
+      opacity: 0.9;
+    }
+    to {
+      color: #16e020;
+      opacity: 0.5;
+    }
+  }
+
