@@ -1,16 +1,11 @@
-<app-speech-to-text
-    (targetText)="output($event)">Listen</app-speech-to-text>
-   
-
-<div>
-    <h1>Add Device</h1>
-    <div>
-        <label>Device Name</label>
-        <input type="text" [(ngModel)]="deviceForm.deviceName" />
-    </div>
-    <div>
-        <label>Device SerialNumber</label>
-        <input type="text" [(ngModel)]="deviceForm.deviceSerialno" />
-    </div>
-    <button>Add</button>
-</div>
+<mat-tab-group animationDuration="0ms">
+    <mat-tab label="Users"> 
+        <app-users></app-users> 
+    </mat-tab>
+    <mat-tab label="Second">
+        Content 2
+    </mat-tab>
+    <mat-tab label="Third">
+        Content 3
+    </mat-tab>
+</mat-tab-group>

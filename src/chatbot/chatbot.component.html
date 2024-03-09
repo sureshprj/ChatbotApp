@@ -1,0 +1,32 @@
+
+<div class="chat-section">
+
+    <mat-icon [matMenuTriggerFor]="menu" [ngStyle]="{'color': 'blue','transform': 'scale(2)'}"> chat</mat-icon>
+
+    <mat-menu #menu="matMenu">
+        <div mat-menu-item [disableRipple]="true" (click)="$event.stopPropagation()">
+            <div class="chat-box">
+                <h2>Quick action</h2>
+                <div class="commands-history">
+                    <mat-list role="list">
+                        <mat-list-item class="no-wrap" role="listitem" *ngFor="let item of history;"> {{item}} </mat-list-item>
+                    
+                      </mat-list>
+                </div>
+                <mat-form-field class="full-width">
+                   <div class="chat-input">
+                        <textarea matInput [(ngModel)]="querytext" placeholder="Type your command here..." ></textarea>
+                        <div class="mic-icon-class">
+                            <mat-icon *ngIf="listening; else mic"  class="soundwave"(click)="stopService()">mic</mat-icon>
+                            <ng-template #mic>
+                                <mat-icon (click)="startService()">mic</mat-icon>
+                            </ng-template>
+                        </div>
+                        <mat-icon (click)="triggerOpenAI()">send</mat-icon>
+                   </div>
+                </mat-form-field>
+                
+            </div>
+        </div>
+    </mat-menu>
+</div>

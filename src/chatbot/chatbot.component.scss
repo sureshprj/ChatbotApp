@@ -1,4 +1,32 @@
-.soundwave {
+.chat-section {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .chat-input {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .chat-box {
+    width: 450px;
+  
+    textarea {
+      resize: none;
+    }
+  }
+  
+  .commands-history {
+    max-height: 250px;
+    border: 1px solid #b0b0b0;
+    overflow: auto;
+  }
+  
+  
+  
+  .soundwave {
     animation: soundwave 0.7s infinite;
   }
   
@@ -7,25 +35,29 @@
       opacity: 0.5;
       color: #16e020;
     }
+  
     20% {
       color: #16e020;
       opacity: 0.6;
     }
+  
     35% {
       color: #16e020;
       opacity: 0.9;
     }
+  
     45% {
       color: #16e020;
       opacity: 1;
     }
+  
     55% {
       color: #16e020;
       opacity: 0.9;
     }
+  
     to {
       color: #16e020;
       opacity: 0.5;
     }
   }
-
