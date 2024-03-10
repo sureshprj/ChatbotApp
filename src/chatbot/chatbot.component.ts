@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { VoiceRecognitionService } from '../service/voice-recognition.service';
 import { Configuration, CreateChatCompletionResponse, OpenAIApi } from 'openai';
-import { SYSTEM_COMMAND } from '../constant';
+import { GPT_CONFIG, KEY_CONFIG, SYSTEM_COMMAND } from '../constant';
 import { map } from 'rxjs';
 import _ from "lodash";
 import { ActionTypes } from '../app/users/users.component';
@@ -15,34 +15,17 @@ export class ChatbotComponent {
 
   @Input() pageActions: Array<string> = [];
   @Output() onActionResponse = new EventEmitter<any>();;
-
+  processing: boolean = false;
   querytext: string | undefined;
   history : Array<string> = [
     "Give command for User Table Add,filter,update and delete",
   ]
   openai: OpenAIApi;
   configuration: Configuration;
-  gpt_config = {
-    model: "gpt-3.5-turbo",
-    messages: [
-      {
-        "role": "system",
-        "content": SYSTEM_COMMAND
-      }
-    ],
-    temperature: 0,
-    max_tokens: 100,
-    top_p: 1.0,
-    frequency_penalty: 0.0,
-    presence_penalty: 0.0,
-  }
-  
 
   constructor(
     public service: VoiceRecognitionService) {
-    this.configuration = new Configuration({
-      apiKey: "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"
-    });
+    this.configuration = new Configuration(KEY_CONFIG);
     this.openai = new OpenAIApi(this.configuration);
     this.service.init();
   }
@@ -75,7 +58,7 @@ export class ChatbotComponent {
 
   public async connectOpenAI(prompt: any) {
     console.log("THE FINAL PROMPT IS ", prompt);
-
+    this.processing = true;
     await this.openai.createChatCompletion(prompt).then((res: any) => {
       //this.targetText.emit(x.data.choices[0].message.content)
       console.log("Response from OPENAI:: ", res.data.choices[0].message.content)
@@ -83,8 +66,11 @@ export class ChatbotComponent {
         const response = JSON.parse(res.data.choices[0].message.content);
         this.onActionResponse.emit(response);
         this.history.push(this.onAction(response))
+        this.querytext = "";
+        this.processing = false;
       }catch(ex){
         this.history.push("Invalid Command, Please try with different command")
+        this.processing = false;
       }
     })
   }
@@ -107,7 +93,7 @@ export class ChatbotComponent {
   triggerOpenAI(){
     let prompt:string = "";
     prompt += this.querytext;
-    let gpt_config = _.cloneDeep(this.gpt_config);
+    let gpt_config = _.cloneDeep(GPT_CONFIG);
     gpt_config.messages[0].content = SYSTEM_COMMAND.replaceAll("{{ACTIONS}}",this.getFormFields())
     let userPrompt = {
       "role": "user",

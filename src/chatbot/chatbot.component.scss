@@ -12,7 +12,13 @@
   
   .chat-box {
     width: 450px;
-  
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+    flex-direction: column;
+    margin-right: 10px;
+    position: relative;
     textarea {
       resize: none;
     }
@@ -20,7 +26,6 @@
   
   .commands-history {
     max-height: 250px;
-    border: 1px solid #b0b0b0;
     overflow: auto;
   }
   
@@ -60,4 +65,11 @@
       color: #16e020;
       opacity: 0.5;
     }
+  }
+  .loader-process {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
   }

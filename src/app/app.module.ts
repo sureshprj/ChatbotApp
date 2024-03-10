@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatTabsModule } from '@angular/material/tabs';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-
+import {MatDividerModule} from '@angular/material/divider'
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatIconModule } from "@angular/material/icon"
@@ -14,6 +14,7 @@ import { UsersComponent } from './users/users.component';
 import { MatMenuModule  } from "@angular/material/menu"
 import {MatListModule} from '@angular/material/list';
 import { ChatbotComponent } from '../chatbot/chatbot.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,9 @@ import { ChatbotComponent } from '../chatbot/chatbot.component';
     MatInputModule,
     MatIconModule,
     MatMenuModule,
-    MatListModule
+    MatListModule,
+    MatDividerModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     provideAnimationsAsync()

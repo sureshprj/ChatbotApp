@@ -1,6 +1,22 @@
-export const COMMAND = {
-    token: ""
+export const KEY_CONFIG = {
+    apiKey: "sk-GCSI3wTmtwQRLbB1QiwwT3BlbkFJfeWhwlL7nQBH8mMoHn"
 }
+export const GPT_CONFIG = {
+    model: "gpt-3.5-turbo",
+    messages: [
+      {
+        "role": "system",
+        "content": ""
+      }
+    ],
+    temperature: 0,
+    max_tokens: 100,
+    top_p: 1.0,
+    frequency_penalty: 0.0,
+    presence_penalty: 0.0,
+}
+  
+
 export const SYSTEM_COMMAND = `You are an intelligent assistant specialized in converting unstructured user information into structured JSON data. 
 User can do following operations 'ADD,' 'VIEW,' 'UPDATE,' or 'DELETE.
 The useraction field should be one of the following values: 'ADD,' 'VIEW,' 'UPDATE,' or 'DELETE.'

@@ -45,21 +45,21 @@ const ELEMENT_DATA: UserElement[] = [
     firstname: "Demo",
     lastname: "user",
     email: "demouser@cisco.com",
-   // roles: ["Super Admin", "Tenant Admin", "Device Operator"]
+    // roles: ["Super Admin", "Tenant Admin", "Device Operator"]
   },
   {
     id: 3,
     firstname: "Prod",
     lastname: "admin",
     email: "prodadmin@cisco.com",
-   // roles: ["Super Admin", "Tenant Admin", "Device Operator"]
+    // roles: ["Super Admin", "Tenant Admin", "Device Operator"]
   },
   {
     id: 4,
     firstname: "super",
     lastname: "user",
     email: "superuser@cisco.com",
-   // roles: ["Super Admin", "Tenant Admin", "Device Operator"]
+    // roles: ["Super Admin", "Tenant Admin", "Device Operator"]
   }
 ];
 
